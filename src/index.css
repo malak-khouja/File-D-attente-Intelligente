@@ -1,13 +1,27 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Styles globaux */
+.main-content {
+  min-height: calc(100vh - 120px); /* Ajuste la hauteur pour le footer */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Animation pour les cartes de file d'attente */
+.queue-card {
+  transition: transform 0.3s ease;
+}
+
+.queue-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Styles pour les formulaires */
+.auth-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }

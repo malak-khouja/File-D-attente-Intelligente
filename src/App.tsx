@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+import Navbar from './components/Shared/Navbar';
+import Footer from './components/Shared/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Profile from './pages/Profile';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
+import { authService } from './services/authServices';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const user = authService.getCurrentUser();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Container className="main-content py-4">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route 
+            path="/profile" 
+            element={user ? <Profile /> : <Navigate to="/login" />} 
+          />
+          <Route 
+            path="/login" 
+            element={!user ? <Login /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path="/signup" 
+            element={!user ? <Signup /> : <Navigate to="/" />} 
+          />
+        </Routes>
+      </Container>
+      <Footer />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
+
