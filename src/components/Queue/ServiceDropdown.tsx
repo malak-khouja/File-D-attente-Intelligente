@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown, Form } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { GearFill } from 'react-bootstrap-icons';
 
 interface ServiceDropdownProps {

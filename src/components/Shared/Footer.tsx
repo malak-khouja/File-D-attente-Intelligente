@@ -25,10 +25,10 @@ const Footer: React.FC = () => {
               pour les entreprises et institutions publiques.
             </p>
             <div className="d-flex gap-3">
-              <a href="#" className="text-white"><Facebook size={20} /></a>
-              <a href="#" className="text-white"><Twitter size={20} /></a>
-              <a href="#" className="text-white"><Instagram size={20} /></a>
-              <a href="#" className="text-white"><Linkedin size={20} /></a>
+              <a href="#" className="text-white"><Facebook size={20} />https://www.facebook.com/malak.khouja/</a>
+              <a href="#" className="text-white"><Twitter size={20} />https://github.com/malak-khouja</a>
+              <a href="#" className="text-white"><Instagram size={20} />https://www.instagram.com/malak.khouja/</a>
+              <a href="#" className="text-white"><Linkedin size={20} />https://www.linkedin.com/in/malak-khouja-4391762aa/</a>
             </div>
           </Col>
           
