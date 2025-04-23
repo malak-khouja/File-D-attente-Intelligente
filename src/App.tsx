@@ -17,7 +17,10 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <Navbar />
+  <Navbar />
+  
+  <div className="background-wrapper">
+    <div className="overlay">
       <Container className="main-content py-4">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,8 +40,12 @@ const App: React.FC = () => {
           />
         </Routes>
       </Container>
-      <Footer />
-    </BrowserRouter>
+    </div>
+  </div>
+
+  <Footer />
+</BrowserRouter>
+
   );
 };
 

@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.background-wrapper {
+  background-image: url('./images/background.png'); /* image dans public/images */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh; /* ou 80vh si tu veux que ça ne prenne pas tout */
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0.7); /* blanc transparent */
+  width: 100%;
+  min-height: 100%;
+  padding: 4rem 0;
+}
