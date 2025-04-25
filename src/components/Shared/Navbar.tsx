@@ -28,6 +28,7 @@ const CustomNavbar: React.FC = () => {
             <Nav.Link href="/">Accueil</Nav.Link>
             <Nav.Link href="/about">À propos</Nav.Link>
             <Nav.Link href="/contact">Contact</Nav.Link>
+            <Nav.Link href="/profile">Profile</Nav.Link>
           </Nav>
           
           <Nav className="align-items-center">
@@ -70,10 +71,7 @@ const CustomNavbar: React.FC = () => {
               <>
                 <Button 
                   variant="outline-light" 
-                  className="me-2" 
-                  href="/import { authService } from '../../services/authServices';
-"
-                >
+                  href="/login">
                   Connexion
                 </Button>
                 <Button variant="light" href="/signup">

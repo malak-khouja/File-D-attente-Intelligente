@@ -1,14 +1,17 @@
+// frontend/services/queueService.ts
 import axios from 'axios';
 import { QueueTicket, QueueStatus } from '../types/queue';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/queues';
+const API_URL =  'http://localhost:3000/api/queues'; // Utilisez /api/queues
+const TICKET_API_URL = 'http://localhost:3000/ticket'; // Gardez ceci pour les opérations sur les tickets
+
 
 export const queueService = {
   async getQueues(): Promise<QueueStatus[]> {
     try {
-      const response = await axios.get(`${API_URL}`);
-      return response.data;
-    } catch (error : any) {
+      const response = await axios.get(`${API_URL}/getall`); // Utilisez /api/queues/getall
+      return response.data.data; // Accédez aux données dans la réponse
+    } catch (error: any) {
       console.error('Error fetching queues:', error);
       throw new Error(error.response?.data?.message || 'Erreur lors de la récupération des files');
     }
@@ -16,9 +19,9 @@ export const queueService = {
 
   async getQueueById(queueId: string): Promise<QueueStatus> {
     try {
-      const response = await axios.get(`${API_URL}/${queueId}`);
-      return response.data;
-    } catch (error : any) {
+      const response = await axios.get(`${API_URL}/${queueId}`); // Utilisez /api/queues/:queueId
+      return response.data.data;  // Accédez aux données
+    } catch (error: any) {
       console.error('Error fetching queue:', error);
       throw new Error(error.response?.data?.message || 'Erreur lors de la récupération de la file');
     }
@@ -26,12 +29,12 @@ export const queueService = {
 
   async takeTicket(queueId: string, userId: string, priority?: string): Promise<QueueTicket> {
     try {
-      const response = await axios.post(`${API_URL}/${queueId}/tickets`, {
+      const response = await axios.post(`${API_URL}/${queueId}/tickets`, { // POST à la bonne URL
         userId,
-        priorityType: priority || 'standard'
+        priorityType: priority || 'standard',
       });
-      return response.data;
-    } catch (error : any) {
+      return response.data.data; // Accédez aux données
+    } catch (error: any) {
       console.error('Error taking ticket:', error);
       throw new Error(error.response?.data?.message || 'Erreur lors de la prise du ticket');
     }
@@ -39,8 +42,8 @@ export const queueService = {
 
   async cancelTicket(ticketId: string): Promise<void> {
     try {
-      await axios.delete(`${API_URL}/tickets/${ticketId}`);
-    } catch (error : any) {
+      await axios.delete(`${TICKET_API_URL}/delete/${ticketId}`);
+    } catch (error: any) {
       console.error('Error canceling ticket:', error);
       throw new Error(error.response?.data?.message || 'Erreur lors de l\'annulation du ticket');
     }
@@ -48,9 +51,9 @@ export const queueService = {
 
   async getCurrentPosition(ticketId: string): Promise<{ position: number; estimatedTime: number }> {
     try {
-      const response = await axios.get(`${API_URL}/tickets/${ticketId}/position`);
-      return response.data;
-    } catch (error : any) {
+      const response = await axios.get(`${API_URL}/tickets/${ticketId}/position`); // Utilisez la bonne URL
+      return response.data.data; // Accédez aux données
+    } catch (error: any) {
       console.error('Error getting position:', error);
       throw new Error(error.response?.data?.message || 'Erreur lors de la récupération de la position');
     }
@@ -68,5 +71,5 @@ export const queueService = {
     }, 5000);
 
     return () => clearInterval(intervalId);
-  }
+  },
 };

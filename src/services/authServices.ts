@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { User } from '../types/user';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/auth';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000/client';
 
 // Configuration Axios globale
 axios.interceptors.request.use(config => {

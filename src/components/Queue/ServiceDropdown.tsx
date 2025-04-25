@@ -9,11 +9,9 @@ interface ServiceDropdownProps {
 
 const ServiceDropdown: React.FC<ServiceDropdownProps> = ({ onSelect, disabled = false }) => {
   const services = [
-    'Consultation médicale',
-    'Paiement factures',
-    'Retrait documents',
-    'Service client',
-    'Demande de renseignements'
+    'État civil',
+    'Attestation de signature',
+    'Copie conforme à l\'original'
   ];
 
   const [selectedService, setSelectedService] = React.useState<string | null>(null);
